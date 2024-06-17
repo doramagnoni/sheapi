@@ -128,6 +128,11 @@ else:
         r"^https://.*\.gitpod\.io$",
     ]
 
+CSRF_TRUSTED_ORIGINS = [
+    'https://sheapi-001672ab3b00.herokuapp.com',  
+    'http://localhost:3000',  
+]
+
 CORS_ALLOW_CREDENTIALS = True
 
 ROOT_URLCONF = 'sheapi.urls'

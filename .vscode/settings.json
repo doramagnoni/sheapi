@@ -13,6 +13,6 @@
       "**/CVS": true
    },
    "files.autoSave": "off",
-   "workbench.colorTheme": "Vaporizer Blue-Green Dark",
+   "workbench.colorTheme": "Night Pink",
    "terminal.integrated.gpuAcceleration": "canvas",
 }
