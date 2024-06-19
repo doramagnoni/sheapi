@@ -89,8 +89,6 @@ INSTALLED_APPS = [
     'dj_rest_auth.registration',
     'corsheaders',
 
-
-
     'profiles',
     'posts',
     'comments',
@@ -117,6 +115,7 @@ MIDDLEWARE = [
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
     "https://sheapi-001672ab3b00.herokuapp.com",
+    "https://3000-doramagnoni-sheinspires-usp0jfiy4j0.ws-eu114.gitpod.io/"
 ]
 
 CORS_ALLOW_CREDENTIALS = True
@@ -126,7 +125,20 @@ CSRF_TRUSTED_ORIGINS = [
     "https://sheapi-001672ab3b00.herokuapp.com",
 ]
 
-CORS_ALLOW_CREDENTIALS = True
+CORS_ALLOW_HEADERS = [
+    'authorization',
+    'content-type',
+    'x-csrftoken',
+]
+
+CORS_ALLOW_METHODS = [
+    'DELETE',
+    'GET',
+    'OPTIONS',
+    'PATCH',
+    'POST',
+    'PUT',
+]
 
 ROOT_URLCONF = 'sheapi.urls'
 
