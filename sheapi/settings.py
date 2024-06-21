@@ -66,6 +66,15 @@ DEBUG = 'DEV' in os.environ
 
 ALLOWED_HOSTS = ['localhost', '127.0.0.1', '.herokuapp.com']
 
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:3000",
+    "https://sheapi-001672ab3b00.herokuapp.com",
+    "https://doramagnoni-sheinspires-t84b1aw8t1b.ws-eu114.gitpod.io",
+    "https://she-inspires-3dbf32b2af97.herokuapp.com"
+]
+
+CORS_ALLOW_CREDENTIALS = True
+
 
 # Application definition
 
@@ -112,34 +121,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-CORS_ALLOWED_ORIGINS = [
-    "http://localhost:3000",
-    "https://sheapi-001672ab3b00.herokuapp.com",
-    "https://doramagnoni-sheinspires-t84b1aw8t1b.ws-eu114.gitpod.io",
-    "https://she-inspires-3dbf32b2af97.herokuapp.com"
-]
 
-CORS_ALLOW_CREDENTIALS = True
-
-CSRF_TRUSTED_ORIGINS = [
-    "http://localhost:3000",
-    "https://sheapi-001672ab3b00.herokuapp.com",
-]
-
-CORS_ALLOW_HEADERS = [
-    'authorization',
-    'content-type',
-    'x-csrftoken',
-]
-
-CORS_ALLOW_METHODS = [
-    'DELETE',
-    'GET',
-    'OPTIONS',
-    'PATCH',
-    'POST',
-    'PUT',
-]
 
 ROOT_URLCONF = 'sheapi.urls'
 
