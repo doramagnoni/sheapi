@@ -29,6 +29,11 @@ class StoryList(generics.ListCreateAPIView):
         'created_at': ['gte', 'lte'],
     }
 
+
+    def get_serializer_context(self):
+        return {'request': self.request}
+
+
     def perform_create(self, serializer):
         serializer.save(author=self.request.user)
 
