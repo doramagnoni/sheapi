@@ -7,7 +7,7 @@ class Story(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    image = models.ImageField(upload_to='images/', default='../two-ladies_iqfqjr', blank=True, null=True)
+    image = models.ImageField(upload_to='images/', blank=True, null=True) 
     category = models.CharField(max_length=50, blank=True)
 
     class Meta:
