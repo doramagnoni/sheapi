@@ -3,12 +3,20 @@ from django.core.exceptions import PermissionDenied
 from django_filters.rest_framework import DjangoFilterBackend
 from .models import Story
 from .serializers import StorySerializer
+from rest_framework.permissions import BasePermission, IsAdminUser
 
+
+
+class IsAdminOrReadOnly(BasePermission):
+    def has_permission(self, request, view):
+        if request.method in permissions.SAFE_METHODS:
+            return True
+        return request.user and request.user.is_staff
 
 class StoryList(generics.ListCreateAPIView):
     queryset = Story.objects.all()
     serializer_class = StorySerializer
-    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
+    permission_classes = [IsAdminOrReadOnly]
 
     filter_backends = [
         filters.OrderingFilter,
@@ -41,7 +49,7 @@ class StoryList(generics.ListCreateAPIView):
 class StoryDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Story.objects.all()
     serializer_class = StorySerializer
-    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
+    permission_classes = [IsAdminOrReadOnly]
 
 
     def perform_update(self, serializer):
