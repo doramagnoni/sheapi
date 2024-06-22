@@ -6,6 +6,7 @@ from .models import Story
 class StorySerializer(serializers.ModelSerializer):
     likes = LikeSerializer(many=True, read_only=True)
     comments = CommentSerializer(many=True, read_only=True)
+    image_url = serializers.SerializerMethodField()
 
     class Meta:
         model = Story
