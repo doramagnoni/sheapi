@@ -10,3 +10,11 @@ class StorySerializer(serializers.ModelSerializer):
     class Meta:
         model = Story
         fields = ['id', 'title', 'content', 'author', 'created_at', 'updated_at', 'likes', 'comments']
+
+
+
+    def get_image(self, obj):
+        request = self.context.get('request')
+        if obj.image:
+            return request.build_absolute_uri(obj.image.url)
+        return None
