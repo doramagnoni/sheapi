@@ -1,9 +1,9 @@
-
-from django.db.models import Count
 from rest_framework import generics, permissions, filters
+from django.core.exceptions import PermissionDenied
 from django_filters.rest_framework import DjangoFilterBackend
 from .models import Story
 from .serializers import StorySerializer
+
 
 class StoryList(generics.ListCreateAPIView):
     queryset = Story.objects.all()
@@ -42,3 +42,12 @@ class StoryDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Story.objects.all()
     serializer_class = StorySerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
+
+
+    def perform_update(self, serializer):
+       
+        if self.request.user.is_authenticated:
+            serializer.save(author=self.request.user)
+        else:
+            
+            raise PermissionDenied("You must be logged in to update this story.")
