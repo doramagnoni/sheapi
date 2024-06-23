@@ -17,6 +17,7 @@ class StoryList(generics.ListCreateAPIView):
     queryset = Story.objects.all()
     serializer_class = StorySerializer
     permission_classes = [IsAdminOrReadOnly]
+    pagination_class = None 
 
     filter_backends = [
         filters.OrderingFilter,
