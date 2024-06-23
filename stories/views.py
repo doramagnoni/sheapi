@@ -19,25 +19,25 @@ class StoryList(generics.ListCreateAPIView):
     permission_classes = [IsAdminOrReadOnly]
     pagination_class = None 
 
-    filter_backends = [
-        filters.OrderingFilter,
-        filters.SearchFilter,
-        DjangoFilterBackend,
-    ]
-    search_fields = [
-        'title',
-        'author__username',
-    ]
-    ordering_fields = [
-        'created_at',
-        'updated_at',
-    ]
-    filterset_fields = {
-        'title': ['icontains'],
-        'author': ['exact'],
-        'created_at': ['gte', 'lte'],
-    }
-
+    # The entire filter_backends section is commented out
+    # filter_backends = [
+    #     filters.OrderingFilter,
+    #     filters.SearchFilter,
+    #     DjangoFilterBackend,  # This line is also commented out
+    # ]
+    # search_fields = [
+    #     'title',
+    #     'author__username',
+    # ]
+    # ordering_fields = [
+    #     'created_at',
+    #     'updated_at',
+    # ]
+    # filterset_fields = {
+    #     'title': ['icontains'],
+    #     'author': ['exact'],
+    #     'created_at': ['gte', 'lte'],
+    # }
 
     def get_serializer_context(self):
         return {'request': self.request}

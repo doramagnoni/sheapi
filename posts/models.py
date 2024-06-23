@@ -30,9 +30,9 @@ class Post(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
     title = models.CharField(max_length=255)
     content = models.TextField(blank=True)  
-    image = models.ImageField(
-        upload_to='images/', default='../user_1144760_1_vut7ya', blank=True
-    )
+    image = models.ImageField(upload_to='images/', blank=True)
+       
+    
     image_filter = models.CharField(
         max_length=32, choices=image_filter_choices, default='normal'
     )
