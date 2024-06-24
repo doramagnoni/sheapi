@@ -39,6 +39,19 @@ class PostSerializer(serializers.ModelSerializer):
             ).first()
             return like.id if like else None
         return None
+    
+    def create(self, validated_data):
+
+        print("Validated Data: ", validated_data)
+       
+        validated_data.pop('is_owner', None)
+        validated_data.pop('profile_id', None)
+        validated_data.pop('profile_image', None)
+        validated_data.pop('like_id', None)
+        validated_data.pop('likes_count', None)
+        validated_data.pop('comments_count', None)
+        
+        return Post.objects.create(**validated_data)
 
     class Meta:
         model = Post
