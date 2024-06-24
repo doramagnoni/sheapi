@@ -1,3 +1,4 @@
+
 from rest_framework import serializers
 from posts.models import Post
 from likes.models import Like
@@ -37,22 +38,6 @@ class PostSerializer(serializers.ModelSerializer):
             ).first()
             return like.id if like else None
         return None
-
-    def create(self, validated_data):
-        
-        validated_data.pop('owner', None)
-        validated_data.pop('is_owner', None)
-        validated_data.pop('profile_id', None)
-        validated_data.pop('profile_image', None)
-        validated_data.pop('like_id', None)
-        validated_data.pop('likes_count', None)
-        validated_data.pop('comments_count', None)
-
-       
-        model_fields = {field.name: value for field, value in validated_data.items() if field.name in Post.__dict__.keys()}
-
-   
-        return Post.objects.create(**model_fields)
 
     class Meta:
         model = Post
