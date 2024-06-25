@@ -6,17 +6,7 @@ from .models import Story
 class StorySerializer(serializers.ModelSerializer):
     likes = LikeSerializer(many=True, read_only=True)
     comments = CommentSerializer(many=True, read_only=True)
-    image_url = serializers.SerializerMethodField()
 
     class Meta:
         model = Story
-        fields = ['id', 'title', 'content', 'author', 'created_at', 'updated_at','image_url','likes', 'comments']
-
-
-
-
-    def get_image_url(self, obj):
-        request = self.context.get('request')
-        if obj.image:
-            return request.build_absolute_uri(obj.image.url)
-        return None
+        fields = ['id', 'title', 'content', 'author', 'created_at', 'updated_at', 'likes', 'comments']
