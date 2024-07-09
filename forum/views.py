@@ -4,7 +4,11 @@ from django_filters.rest_framework import DjangoFilterBackend
 from .models import ForumTopic, ForumPost
 from .serializers import ForumTopicSerializer, ForumPostSerializer
 
+
 class ForumTopicList(generics.ListCreateAPIView):
+    """
+    List all forum topics or create a new topic.
+    """
     serializer_class = ForumTopicSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
     queryset = ForumTopic.objects.annotate(
@@ -35,18 +39,28 @@ class ForumTopicList(generics.ListCreateAPIView):
         serializer.save(author=self.request.user)
 
 
-
 class ForumTopicDetail(generics.RetrieveUpdateDestroyAPIView):
+    """
+    Retrieve, update or delete a forum topic.
+    """
     queryset = ForumTopic.objects.all()
     serializer_class = ForumTopicSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
 
+
 class ForumPostList(generics.ListCreateAPIView):
+    """
+    List all forum posts or create a new post.
+    """
     queryset = ForumPost.objects.all()
     serializer_class = ForumPostSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
 
+
 class ForumPostDetail(generics.RetrieveUpdateDestroyAPIView):
+    """
+    Retrieve, update or delete a forum post.
+    """
     queryset = ForumPost.objects.all()
     serializer_class = ForumPostSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]

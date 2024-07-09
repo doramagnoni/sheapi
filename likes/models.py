@@ -4,11 +4,11 @@ from posts.models import Post
 
 
 class Like(models.Model):
-   
+    """
+    Model representing a like on a post by a user.
+    """
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
-    post = models.ForeignKey(
-        Post, related_name='likes', on_delete=models.CASCADE
-    )
+    post = models.ForeignKey(Post, related_name='likes', on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
 
     class Meta:
@@ -16,4 +16,4 @@ class Like(models.Model):
         unique_together = ['owner', 'post']
 
     def __str__(self):
-        return f'{self.owner} {self.post}'
+        return f'{self.owner} likes {self.post}'

@@ -1,8 +1,11 @@
 from dj_rest_auth.serializers import UserDetailsSerializer
 from rest_framework import serializers
 
-
 class CurrentUserSerializer(UserDetailsSerializer):
+    """
+    Custom serializer for the current user, extending UserDetailsSerializer
+    and including additional profile information.
+    """
     profile_id = serializers.ReadOnlyField(source='profile.id')
     profile_image = serializers.ReadOnlyField(source='profile.image.url')
 
