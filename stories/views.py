@@ -1,14 +1,15 @@
+# stories/views.py
 from rest_framework import generics, permissions
 from .models import Story
 from .serializers import StorySerializer
+from .permissions import IsAdminOrReadOnly  
 
-class StoryList(generics.ListCreateAPIView):
-    """
-    List all stories or create a new story if authenticated.
-    """
+class StoryListCreateAPIView(generics.ListCreateAPIView):
     queryset = Story.objects.all()
     serializer_class = StorySerializer
-    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
-
-    def perform_create(self, serializer):
-        serializer.save(author=self.request.user)
+    permission_classes = [IsAdminOrReadOnly]  # Custom permission for admin-only create
+    
+class StoryRetrieveUpdateDestroyAPIView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Story.objects.all()
+    serializer_class = StorySerializer
+    permission_classes = [IsAdminOrReadOnly]  # Custom permission for admin-only update/delete
