@@ -9,7 +9,7 @@ class Story(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     likes = models.ManyToManyField(User, related_name='liked_stories', blank=True)
-    # Add other fields as needed
+    image = models.ImageField(upload_to='stories_images/', blank=True, null=True)  
 
     def __str__(self):
         return self.title
