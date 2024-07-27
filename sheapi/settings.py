@@ -70,7 +70,7 @@ ALLOWED_HOSTS = ['localhost', '127.0.0.1', '.herokuapp.com']
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
     "https://sheapi-001672ab3b00.herokuapp.com",
-    "https://*.gitpod.io",
+    "https://doramagnoni-sheinspires-f3llen2wk56.ws-eu115.gitpod.io",
     "https://she-inspires-3dbf32b2af97.herokuapp.com"
 ]
 
@@ -79,12 +79,9 @@ CORS_ALLOW_CREDENTIALS = True
 CSRF_TRUSTED_ORIGINS = [
     "http://localhost:3000",
     "https://sheapi-001672ab3b00.herokuapp.com",
-    "https://3000-doramagnoni-sheinspires-6xi4izgss9d.ws-eu115.gitpod.io",
-    "https://she-inspires-3dbf32b2af97.herokuapp.com",
-    "https://*.gitpod.io" 
+    "https://doramagnoni-sheinspires-f3llen2wk56.ws-eu115.gitpod.io/",
+    "https://she-inspires-3dbf32b2af97.herokuapp.com" 
 ]
-
-
 # Application definition
 
 INSTALLED_APPS = [
