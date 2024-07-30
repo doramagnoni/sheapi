@@ -71,17 +71,11 @@ CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
     "https://sheapi-001672ab3b00.herokuapp.com",
     "https://she-inspires-3dbf32b2af97.herokuapp.com",
-    'https://3000-doramagnoni-sheinspires-lu1zh3lj8bx.ws-eu115.gitpod.io',
+    'https://3000-doramagnoni-sheinspires-3ba3le6x75w.ws-eu115.gitpod.io',
 ]
 CORS_ALLOW_CREDENTIALS = True
 
-CSRF_TRUSTED_ORIGINS = [
-    "http://localhost:3000",
-    "https://sheapi-001672ab3b00.herokuapp.com",
-    'https://3000-doramagnoni-sheinspires-lu1zh3lj8bx.ws-eu115.gitpod.io',
-    "https://she-inspires-3dbf32b2af97.herokuapp.com",
-    "https://*.gitpod.io" 
-]
+
 
 
 # Application definition
